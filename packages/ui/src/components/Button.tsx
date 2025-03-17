@@ -1,14 +1,18 @@
 import { ComponentProps } from 'react';
-import { storiesButton, StoriesButtonProps } from './Button.css';
+import { buttonIcon, storiesButton, StoriesButtonProps } from './Button.css';
+import Icon, { IconObj } from '../icons/Icon';
 
 interface ButtonProps extends ComponentProps<'button'> {
-  bg: StoriesButtonProps['bg'];
+  size: StoriesButtonProps['size'];
+  icon?: keyof typeof IconObj;
+  ty?: StoriesButtonProps['ty'];
 }
 
-const Button = ({ bg, ...props }: ButtonProps) => {
+const Button = ({ size, children, icon, ty = 'elevated', ...props }: ButtonProps) => {
   return (
-    <button className={storiesButton({ bg })} {...props}>
-      {bg === 'primary' ? 'primaryButton' : 'secondaryButton'}
+    <button className={storiesButton({ size, ty })} {...props}>
+      {icon && <Icon iconName={icon} className={buttonIcon[size]} />}
+      {children}
     </button>
   );
 };

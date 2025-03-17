@@ -6,24 +6,29 @@ const meta = {
   component: Button,
   tags: ['autodocs'],
   argTypes: {
-    bg: {
-      control: 'select',
-      options: ['primary', 'secondary', 'tertiary'],
-    },
+    size: { control: 'radio', options: ['sm', 'md', 'lg'] },
+    disabled: { control: 'boolean' },
+    onClick: { action: 'clicked' },
+    onFocus: { action: 'focused' },
+    ty: { control: 'select', options: ['elevated', 'filled', 'filledTonal', 'outlined', 'text'] },
   },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const BaseButton: Story = {
   args: {
-    bg: 'primary',
+    size: 'md',
+    children: 'Base Button',
+    ty: 'elevated',
   },
 };
 
-export const Secondary: Story = {
+export const ButtonWithIcon: Story = {
   args: {
-    bg: 'secondary',
+    size: 'md',
+    children: 'Icon Button',
+    icon: 'MdAccessTime',
   },
 };

@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react';
 import React from 'react';
-import { testThemeClass } from '../src/styles/theme/colors.css';
+import { defaultThemeClasses } from '../src/styles/theme/colors.css';
 
 export const preview: Preview = {
   parameters: {
@@ -15,7 +15,7 @@ export const preview: Preview = {
 
 export const decorators = [
   (Story) => (
-    <div className={testThemeClass}>
+    <div className={defaultThemeClasses}>
       <Story />
     </div>
   ),
